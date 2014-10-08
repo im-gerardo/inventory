@@ -4,9 +4,6 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
 
-  .DS_store
-  /log/*
-  /temp/*
 #
 default: &default
   adapter: sqlite3
