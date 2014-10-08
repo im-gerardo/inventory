@@ -1,0 +1,2 @@
+module SuggestbuylistsHelper
+end

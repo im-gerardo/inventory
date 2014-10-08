@@ -1,0 +1,39 @@
+
+
+
+<h1>Sugerencias de compra</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Stock</th>      
+      <th>Minimo</th>
+    </tr>
+  </thead>
+
+  <tbody>
+      	<% @datos.each do |d| %>
+      		<% if d['stock'] <= d['minimum'] %>
+				<tr class="danger">
+					<td><%= d['name'] %></td>
+					<td><b><%= d['stock'] %></b></td>
+					<td><%= d['minimum'] %></td>
+				</tr>
+				<% elsif d['stock'] <= (d['minimum']+3) %>
+				<tr class="warning">
+					<td><%= d['name'] %></td>
+					<td><b><%= d['stock'] %></b></td>
+					<td><%= d['minimum'] %></td>
+				</tr>
+				<% else %>
+				<tr>
+					<td><%= d['name'] %></td>
+					<td><b><%= d['stock'] %></b></td>
+					<td><%= d['minimum'] %></td>
+				</tr>
+
+      		<% end %>
+		<% end %>
+  </tbody>
+</table>

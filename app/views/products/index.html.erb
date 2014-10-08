@@ -1,0 +1,43 @@
+
+<%= provide(:title, 'Productos') %>
+
+<div class="panel panel-default">
+  <div class="panel-heading"><h2>Listado de productos <%= link_to new_product_path, :class => "btn btn-success pull-right" do %> <i class="fa fa-plus"></i> Agregar Producto  <% end %></h2>
+  </div>
+  <table class="table">
+    <thead>
+    <tr>
+      <th></th>
+      <th>Nombre</th>
+      <th>Costo</th>
+      <th>Precio</th>
+      <th>Categoría</th>
+      <th>Stock</th>
+      <th>Mínimo</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= image_tag 'svg/'+product.image, :class => "hidden-xs" %></td>
+        <td><%= link_to product.name, product %></td>
+        <td><i class="fa fa-usd"></i><%= product.cost %></td>
+        <td><i class="fa fa-usd"></i><%= product.price %></td>
+        <td><%= link_to product.category.name, product.category %></td>
+        <td><%= product.stock %></td>
+        <td><%= product.minimum %></td>
+        <td>
+          <%= link_to product do %><i class="fa fa-eye"></i> Ver <% end %>
+          <%= link_to edit_product_path(product) do %><i class="fa fa-pencil"></i> Editar<% end %> 
+          <%= link_to product, method: :delete, data: { confirm: '¿Quieres eliminarlo?' } do %><i class="fa fa-trash"></i> Borrar<% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+  </table>
+
+  
+</div>
+

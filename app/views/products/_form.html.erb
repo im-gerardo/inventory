@@ -1,0 +1,46 @@
+<%= form_for(@product) do |f| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+      <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= f.label "Nombre" %><br>
+    <%= f.text_field :name, :class => "form-control" %>
+  </div>
+  <div class="field form-group">
+    <%= f.label "Imagen" %><br>
+    <%= f.text_field :image, :class => "form-control" %>
+  </div>
+  <div class="field form-group">
+    <%= f.label "Costo" %><br>
+    <%= f.text_field :cost, :class => "form-control" %>
+  </div>
+  <div class="field form-group">
+    <%= f.label "Precio" %><br>
+    <%= f.text_field :price, :class => "form-control" %>
+  </div>
+  <div class="field form-group">
+    <%= f.label "Selecciona una categoría" %><br>
+    <%= f.select :category_id, options_from_collection_for_select(@categories, 'id', 'name'), {}, {class: 'form-control'}  %>
+  </div>
+  <div class="field form-group">
+    <%= f.label "Stock" %><br>
+    <%= f.number_field :stock, :class => "form-control" %>
+  </div>
+  <div class="field form-group">
+    <%= f.label "Mínimo" %><br>
+    <%= f.number_field :minimum, :class => "form-control" %>
+  </div>
+  <div class="actions">
+
+    <%= f.submit "Agregar", :class => "btn btn-success pull-left" do %>
+    <i class="fa fa-floppy-o"></i><% end %>
+  </div>
+<% end %>

@@ -1,0 +1,14 @@
+<%= provide(:title, 'Ver categoria') %>
+<p id="notice"><%= notice %></p>
+<h1><%= image_tag 'svg/'+@category.image %> <%= @category.name %></h1>
+
+<ul class="list-group">
+	<% @products.each do |p| %>	
+	  <li class="list-group-item">
+	  	<a href="/products/<%= p.id %>"><%= p.name %></a>		  	
+	  	<span class="badge"><%= p.minimum %></span>
+	  	<span class="badge"><%= p.stock %></span>
+	  	<span class="badge">$<%= p.price %></span>
+	  </li>
+	<% end %>
+</ul>

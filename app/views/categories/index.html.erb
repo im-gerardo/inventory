@@ -1,0 +1,33 @@
+<%= provide(:title, 'Lista de categorias') %>
+
+<h1>
+  Lista de categorías
+  <a href="/categories/new"><i class="fa fa-plus-square"></i></a>
+</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th colspan="1"></th>
+      <th>Nombre</th>      
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= image_tag 'svg/'+category.image %></td>
+        <td><%= category.name %></td>        
+        <td>
+          <a href="/categories/<%= category.id %>"><i class="fa fa-search"></i> Ver</a> &nbsp;                  
+          <a href="/categories/<%= category.id %>/edit"> <i class="fa fa-pencil-square"></i> Editar</a> &nbsp;
+          <a data-confirm="Estas seguro?" data-method="delete" href="/categories/<%= category.id %>" rel="nofollow">
+            <i class="fa fa-trash"></i> Borrar
+          </a>
+          <%# link_to 'Borrar', category, method: :delete, data: { confirm: 'Estas seguro?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
